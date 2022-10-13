@@ -1,14 +1,23 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 header {
   display: flex;
   justify-content: space-between;
+  font-size: larger;
 }
 
-.reStartContainer,
+.startContainer,
 .multiChoice {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.startContainer{
+  height: 500px;
+
 }
 
 .quizEnd {
@@ -23,7 +32,6 @@ button {
   border: none;
   margin: 5px;
   padding: 15px;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
 }
 

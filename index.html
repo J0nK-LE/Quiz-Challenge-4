@@ -5,23 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Jon's Quiz</title>
+    <title>Jon's Surprise Surgery Quiz</title>
   </head>
   <body>
     <header>
+      <div>
       <div id="highScore">High Score</div>
+     <span id="scoreRecord"></span>
+    </div>
       <div id="timer">Time left: 75</div>
     </header>
 
     <div class="startContainer" id="startScreen">
-        <div class="reStartContainer">
       <h1>Quiz Challenge</h1>
       <h2>
-        Do you have what it takes to finish the quiz before time runs out!
+        You've worked hard to get to this point, this is the final test. Finish the quiz before time runs out!
       </h2>
       <h2>See if you can get the high score!</h2>
       <button id="startBtn">START!</button>
-    </div>
     </div>
     
 
@@ -32,18 +33,18 @@
     </div>
 
     <div class="multiChoice">
-      <div id="feedback"></div>
+      <h3 id="feedback"></h3>
     </div>
     <div class="hide" id="quizEnd">
-      <h2 class="quizEnd">You completed the quiz! Good for you!</h2>
+      <h2 class="quizEnd">Still think you're ready to perform surgery? Good luck!</h2>
       <h3 class="quizEnd">Your score is: <span id="finalScore"></span></h3>
       <p class="quizEnd">
-        Initials: <input type="text" class="quizEnd" id="initials" />
+        Initials: <input type="text" maxlength="3" class="quizEnd" id="initials" />
       </p>
 
       <div class="quizEnd">
         <button id="submitHS">Submit</button>
-        <button id="goBack">Go Back</button>
+        <button id="restartQuiz">Try Again</button>
       </div>
     </div>
 

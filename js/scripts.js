@@ -6,8 +6,10 @@ let feedback = document.getElementById("feedback");
 let startScreenEl = document.getElementById("startScreen");
 let quizEnd = document.getElementById("quizEnd");
 let questionChoices = document.getElementById("choices");
-let finalScore = document.getElementById("finalScore")
-let goBack = document.getElementById("goBack")
+let finalScore = document.getElementById("finalScore");
+let restartQuiz = document.getElementById("restartQuiz");
+let submitHS = document.getElementById("submitHS");
+let scoreRecord = document.getElementById("scoreRecord")
 
 let time = 75;
 let countingEl;
@@ -18,36 +20,42 @@ let button2 = document.createElement("button");
 let button3 = document.createElement("button");
 let button4 = document.createElement("button");
 
-
-
 startBtn.addEventListener("click", function () {
   countdownTimer();
   startQuiz();
 });
 
+submitHS.addEventListener("click", function () {
+  let initials = document.getElementById("initials").value.toUpperCase();
+  let highScore = finalScore.textContent.toUpperCase()
+  
+  console.log(highScore);
+  console.log(initials);
 
-// NEEDS TO BE FIXED
-// goBack.addEventListener("click", function () {
-//     resetQuiz()
-    
-// });
+  localStorage.setItem("initials", initials);
+   localStorage.setItem("highScore", highScore);
 
-// function resetQuiz(){
-//     questionEl.setAttribute("class", "hide");
-//     quizEnd.setAttribute("class", "hide");
-//     feedback.setAttribute("class", "hide");
-//     timerEl.removeAttribute("class");
-//     startScreenEl.removeAttribute("class");
-    
-//     let questionIndex = questionIndex - 5
+   renderHighScore()
+});
 
+restartQuiz.addEventListener("click", function () {
+  window.location.reload();
+});
 
-    
-// }
+function renderHighScore() {
+  var initials = localStorage.getItem("initials");
+  var highScore = localStorage.getItem("highScore");
+
+  if (!initials || !highScore) {
+    return;
+  }
+
+  scoreRecord.textContent = `${initials}  ${highScore}`
+}
 
 function startQuiz() {
   startScreenEl.setAttribute("class", "hide");
-  questionEl.removeAttribute("class", "hide" );
+  questionEl.removeAttribute("class", "hide");
   runQuestions();
 }
 
@@ -56,7 +64,7 @@ function endQuiz() {
   quizEnd.removeAttribute("class", "hide");
   feedback.setAttribute("class", "hide");
   timerEl.setAttribute("class", "hide");
-  finalScore.textContent = time
+  finalScore.textContent = time;
 }
 
 function countdownTimer() {
@@ -94,7 +102,6 @@ function checkAnswers(event) {
 }
 
 function runQuestions() {
-
   let currentQuestion = questions[questionIndex];
   console.log(currentQuestion);
 
@@ -104,25 +111,25 @@ function runQuestions() {
   button1.setAttribute("class", "button");
   button1.textContent = currentQuestion.choices[0];
   button1.addEventListener("click", checkAnswers);
-  choices.appendChild(button1)
-  
+  choices.appendChild(button1);
+
   button2.setAttribute("content", "2");
   button2.setAttribute("class", "button");
   button2.textContent = currentQuestion.choices[1];
   button2.addEventListener("click", checkAnswers);
-  choices.appendChild(button2)
+  choices.appendChild(button2);
 
   button3.setAttribute("content", "1");
   button3.setAttribute("class", "button");
   button3.textContent = currentQuestion.choices[2];
   button3.addEventListener("click", checkAnswers);
-  choices.appendChild(button3)
+  choices.appendChild(button3);
 
   button4.setAttribute("content", "1");
   button4.setAttribute("class", "button");
   button4.textContent = currentQuestion.choices[3];
   button4.addEventListener("click", checkAnswers);
-  choices.appendChild(button4)
-
+  choices.appendChild(button4);
 }
 
+renderHighScore()
