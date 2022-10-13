@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Jon's Quiz</title>
-
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <div id="highScore">High Score</div>
-        <div id="timer">Time left: 75</div>
+      <div id="highScore">High Score</div>
+      <div id="timer">Time left: 75</div>
     </header>
 
-    <div class="questionContainer">
-        <h1>Quiz Challenge</h1>
-        <h2>Do you have what it takes to finish the quiz before time runs out! see if you can get the high score!</h2>
-        <button id="startBtn">START!</button>
-        
-        
+    <div class="startContainer" id="startScreen">
+        <div class="reStartContainer">
+      <h1>Quiz Challenge</h1>
+      <h2>
+        Do you have what it takes to finish the quiz before time runs out!
+      </h2>
+      <h2>See if you can get the high score!</h2>
+      <button id="startBtn">START!</button>
     </div>
-<script src="assets/scripts.js"></script>
-</body>
+    </div>
+    
+
+
+    <div id="questions" class="hide">
+      <h2 class="multiChoice" id="questionTitle"></h2>
+      <div class="options" id="choices"></div>
+    </div>
+
+    <div class="multiChoice">
+      <div id="feedback"></div>
+    </div>
+    <div class="hide" id="quizEnd">
+      <h2 class="quizEnd">You completed the quiz! Good for you!</h2>
+      <h3 class="quizEnd">Your score is: <span id="finalScore"></span></h3>
+      <p class="quizEnd">
+        Initials: <input type="text" class="quizEnd" id="initials" />
+      </p>
+
+      <div class="quizEnd">
+        <button id="submitHS">Submit</button>
+        <button id="goBack">Go Back</button>
+      </div>
+    </div>
+
+    <script src="./js/questions.js"></script>
+    <script src="./js/scripts.js"></script>
+  </body>
 </html>
