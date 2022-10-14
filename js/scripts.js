@@ -9,7 +9,7 @@ let questionChoices = document.getElementById("choices");
 let finalScore = document.getElementById("finalScore");
 let restartQuiz = document.getElementById("restartQuiz");
 let submitHS = document.getElementById("submitHS");
-let scoreRecord = document.getElementById("scoreRecord")
+let scoreRecord = document.getElementById("scoreRecord");
 
 let time = 75;
 let countingEl;
@@ -27,15 +27,18 @@ startBtn.addEventListener("click", function () {
 
 submitHS.addEventListener("click", function () {
   let initials = document.getElementById("initials").value.toUpperCase();
-  let highScore = finalScore.textContent.toUpperCase()
-  
-  console.log(highScore);
-  console.log(initials);
+  let highScore = finalScore.textContent.toUpperCase();
 
-  localStorage.setItem("initials", initials);
-   localStorage.setItem("highScore", highScore);
+  // console.log(highScore);
+  // console.log(initials);
+  if (!initials || !highScore) {
+    return;
+  } else {
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("highScore", highScore);
 
-   renderHighScore()
+    renderHighScore();
+  }
 });
 
 restartQuiz.addEventListener("click", function () {
@@ -50,7 +53,7 @@ function renderHighScore() {
     return;
   }
 
-  scoreRecord.textContent = `${initials}  ${highScore}`
+  scoreRecord.textContent = `${initials}  ${highScore}`;
 }
 
 function startQuiz() {
@@ -132,4 +135,4 @@ function runQuestions() {
   choices.appendChild(button4);
 }
 
-renderHighScore()
+renderHighScore();
